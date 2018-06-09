@@ -1,0 +1,322 @@
+/** Normal **/
+
+.login-tab{
+    width: 100px;
+    height: 300px;
+}
+nav{
+    margin-bottom: 0 !important;
+}
+.navbar {
+    position: relative;
+    background: #ffffff;
+}
+
+.modal-header{
+    border: none;
+}
+
+.modal-header > h4{
+    font-size: 28px;
+    line-height: 1.14;
+}
+
+.modal-header > .close{
+    font-size: 28px;
+    line-height: 1.14;
+    color:#000000;
+    opacity:1;
+}
+
+.modal-body{
+    padding-top:0;
+}
+
+.dialog-input{
+    margin-top:16px;
+    border: 1px #000000 solid;
+    height: 48px;
+    font-weight: lighter;
+}
+
+.dialog-input > .input-group > .input-group-addon{
+    border: none;
+    background: none;
+    line-height: 1.25;
+    font-size: 16px;
+}
+
+.dialog-input > .input-group > input{
+    border: none;
+    box-shadow: none;
+    background: none;
+    line-height: 1.25;
+    font-size: 16px;
+    height: 48px;
+}
+
+.modal-footer > button{
+    background: #000000;
+    color:#ffffff;
+    padding:14px 36px;
+}
+
+footer{
+    margin-top: 118px;
+    background: #000000;
+    height: 168px;
+    line-height: 168px;
+    color:#ffffff;
+    padding-left: 80px;
+}
+
+
+/** Index **/
+@media screen and (min-width: 768px) {
+    .nav > li{
+        height: 96px;
+    }
+    .nav > li:hover{
+        background: #777;
+    }
+    .nav > .active{
+        border-bottom: 1px #000000 solid;
+    }
+    .nav > li > a{
+        height: 96px;
+        line-height: 64px;
+        font-size: 20px;
+        color: #000000 !important;
+    }
+    .nav > li > a:hover{
+        color: #ffffff !important;
+    }
+    .nav > .active > a{
+        background-color: transparent !important;
+    }
+    .brand {
+        position: absolute;
+        left: 50%;
+        margin-left: -120px !important;
+        display: block;
+    }
+}
+
+
+.getEosrisk {
+    width: 100%;
+    background-image: url("../img/getEosrisk-bg.jpg");
+    background-size: 100% 100%;
+}
+
+.getEosrisk-header{
+    margin-top:128px;
+}
+
+.getEosrisk-board{
+    margin: 72px auto;
+    width: 50%;
+    height: 260px;
+    background: #ffffff;
+    padding: 2.8rem 3.5rem;
+    min-width: 320px;
+}
+.getEosrisk-board-select{
+    width: 35% !important;
+    min-width: 100px !important;
+}
+
+.getEosrisk-board-select > .bootstrap-select{
+    width: 100% !important;
+}
+
+.getEosrisk-board-select > .bootstrap-select > button{
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.getEosrisk-board-input{
+    margin-top:32px;
+    border: 1px #000000 solid;
+    height: 48px;
+}
+
+.getEosrisk-board-input > .input-group > .input-group-addon{
+    border: none;
+    background: none;
+    line-height: 33px;
+    font-size: 20px;
+}
+
+.getEosrisk-board-input > .input-group > input{
+    border: none;
+    box-shadow: none;
+    background: none;
+    line-height: 33px;
+    font-size: 20px;
+    height: 48px;
+}
+
+.getEosrisk-board-button{
+    width: 100%;
+}
+
+.getEosrisk-board-button{
+    height: 48px;
+    color: #ffffff;
+    background: #000000;
+}
+
+
+.houseRental-header{
+    margin-top:128px;
+}
+
+.houseRental-header-title{
+    font-size: 48px;
+}
+
+.houseRental-header-subtitle{
+    margin-top: 24px;
+    font-size: 20px;
+}
+
+.houseRental-header-total{
+    font-size: 32px;
+}
+
+.houseRental-body{
+    margin-top: 64px;
+    margin-bottom: 128px;
+}
+
+
+
+
+.advantage{
+    margin-top:128px;
+}
+
+.advantage-header-title{
+    font-size: 48px;
+}
+
+.advantage-body{
+    margin-top: 64px;
+}
+
+.advantage-body-img{
+    width: 96px;
+    height: 96px;
+    border-radius: 48px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.advantage-body-title{
+    margin-top: 24px;
+}
+
+.advantage-body-content{
+    margin-top: 12px;
+}
+
+/** My Risk Token **/
+
+.risks{
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-left: 32px;
+    padding-bottom: 16px;
+    width: 60%;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    margin-top: 32px;
+}
+
+.risks-header{
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+.risks-row{
+    margin-bottom: 8px;
+}
+
+.risks-content{
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+    padding-bottom: 15px;
+}
+
+.risks-title{
+    display: inline-block;
+    width: 35%;
+    font-weight: 500;
+    vertical-align: top;
+}
+
+.risks-value{
+    display: inline-block;
+    width: 60%;
+    vertical-align: top;
+}
+
+.risks-footer{
+    margin-top:16px;
+}
+
+.risks-footer > button{
+    margin-right: 16px;
+    background: #000000;
+    color:#ffffff;
+    font-size: 16px;
+    padding: 6px 17px;
+}
+
+/** Market **/
+
+.markets{
+    margin-top: 48px;
+}
+.market-card{
+    padding:20px 32px 24px;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 32px;
+}
+
+.market-title{
+    display: inline-block;
+    font-size: 20px;
+}
+
+.market-header > button{
+    margin-left: 16px;
+    background: #000000;
+    color:#ffffff;
+    font-size: 16px;
+    padding: 6px 17px;
+    width: 96px;
+    height: 32px;
+    line-height: 1.25;
+    float: right;
+}
+
+.market-body{
+    margin-top: 16px;
+}
+
+.market-body-row{
+    margin-top: 8px;
+}
+.market-body-title{
+    display: inline-block;
+    width: 35%;
+    font-weight: 500;
+    vertical-align: top;
+}
+
+.market-body-value{
+    display: inline-block;
+    width: 60%;
+    vertical-align: top;
+}
