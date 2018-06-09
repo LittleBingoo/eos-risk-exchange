@@ -2,15 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css"/>
     <title>Hello World!</title>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">Eos Hackathon</div>
-    </header>
+<!-- Header -->
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#navbar-collapse-1" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">My Risk Token</a></li>
+                    <li><a href="#">Market</a></li>
+                </ul>
+                <div class="brand collapse">
+                    <img src="img/RiskExchange_logo.png" height="96px"/>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Create Account <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="login-tab">
+                                <input type="text" value="Username">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container getEosrisk text-center">
+    <div class="getEosrisk-header">
+        <h1>Risks are everywhere in the world.</h1>
+        <h1>Can we fokenize them, and made them tradable?</h1>
+    </div>
+    <div class="getEosrisk-board">
+        <div class="getEosrisk-board-select">
+            <select id="getEosrisk-type" class="selectpicker">
+                <option>House1</option>
+                <option>House2</option>
+                <option>House3</option>
+            </select>
+        </div>
+        <div class="form-group getEosrisk-board-input">
+            <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">Address:</div>
+                <input type="text" class="form-control" id="exampleInputAmount">
+            </div>
+        </div>
+        <button class="getEosrisk-board-button">Pay 1 EOS Get 100 EOSrisk</button>
+    </div>
+</div>
+<div class="container houseRental">
+    <div class="houseRental-header text-center">
+        <div class="houseRental-header-title">House Rental Risk Token</div>
+        <div class="houseRental-header-subtitle">Total EOS</div>
+        <div class="houseRental-header-total">500,000</div>
+    </div>
+    <div class="houseRental-body row">
+        <ul>
+            <li class="col-md-4">Low Cost Low Cost Low Cost Low Cost Low Cost Low Cost</li>
+            <li class="col-md-4">Divisible Equities Divisible Equities Divisible Equities Divisible Equities Divisible
+                Equities
+            </li>
+            <li class="col-md-4">ReTradeable ReTradeable ReTradeable ReTradeable ReTradeable</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container advantage">
+    <div class="advantage-header text-center">
+        <div class="advantage-header-title">Advantage</div>
+    </div>
+    <div class="advantage-body row">
+        <div class="col-md-4 text-center">
+            <div class="advantage-body-img"></div>
+            <div class="advantage-body-title">Low Cost</div>
+            <div class="advantage-body-content">Low Cost Low Cost Low Cost Low Cost Low Cost Low Cost</div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="advantage-body-img"></div>
+            <div class="advantage-body-title">Divisible Equities</div>
+            <div class="advantage-body-content">Divisible Equities Divisible Equities Divisible Equities Divisible Equities Divisible Equities</div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="advantage-body-img"></div>
+            <div class="advantage-body-title">ReTradeable</div>
+            <div class="advantage-body-content">ReTradeable ReTradeable ReTradeable ReTradeable ReTradeable</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    #EOSHACKATHON
+</footer>
+
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js" ></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
 </html>
