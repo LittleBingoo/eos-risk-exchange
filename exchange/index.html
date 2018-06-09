@@ -10,6 +10,22 @@
     <header>
         <div class="container">Eos Hackathon</div>
     </header>
+
+    <script src=js/ecc.js></script>
+    <script>
+        function generateEOSKeyPair() {
+            setTimeout(function () {
+                var _eos_ecc = eos_ecc,
+                        PrivateKey = _eos_ecc.PrivateKey;
+
+                var d = PrivateKey.randomKey();
+                var privkey = d.toWif();
+                var pubkey = d.toPublic().toString();
+                
+                console.log('公钥 Public Key: ' + pubkey + '   私钥 Private Key: ' + privkey);
+            }, 100);
+        }
+    </script>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js" ></script>
