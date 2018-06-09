@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <title>Hello World!</title>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">Eos Hackathon1</div>
+    </header>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/eosjs-browser.js"></script>
+    <script src="js/ecc.js" ></script>
+    <script src="js/eosjs-browser.js"></script>
+    <script src="js/risk.js"></script>
+    <script>
+        var alice = 'alice'
+        var alice_privatekey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC'
+        // keys
+        // eos_randomAccount(alice,'abcdefgh1223',alice_privatekey,result => {
+        //     console.log('name:'+result.name+',privateKey:'+result.privateKey,',publicKey:'+result.publicKey)
+        // })
+
+        // Balance
+        // eos_balance('alice',result => {
+        //     console.log(result)
+        // })
+
+        // transfer
+        // eos_transfer(alice,'abcdefgh1223','5.0000 EOS','risk',alice_privatekey,result => {
+        //     console.log(result)
+        // })
+
+        // house_rental_join
+        // var renter = 'abcdefgh1223'
+        // var rent_address = 'hongkong'
+        // var rent_type = 'RiskExchange'
+        // var renter_privatekey = '5JFVcvMnNcMNNKmeB5nW2WRUQksQDffWwfUqn7fznFPz8Ca9bn6'
+        // house_rental_join(renter,rent_address,rent_type,renter_privatekey,result => {
+        //     console.log('house_rental_join:'+result.status)
+        // })
+
+        // Joined
+        // house_rental_joined(result => {
+        //     console.log(result)
+        // })
+
+        // RNT sale
+        // var asker = 'abcdefgh1223'
+        // var number = 10
+        // var price = '0.5000 EOS'
+        // var asker_privateKey = '5JFVcvMnNcMNNKmeB5nW2WRUQksQDffWwfUqn7fznFPz8Ca9bn6'
+        // house_rental_rnt_sale(asker,number,price,asker_privateKey,result => {
+        //     console.log(result)
+        // })
+
+        // RNT buy
+        // var buyer = 'alice'
+        // var from = 'abcdefgh1223'
+        // var number = 6
+        // var buyer_privateKey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC'
+        //
+        // house_rental_rnt_buy(buyer,from,number,buyer_privateKey,result => {
+        //     console.log(result)
+        // })
+
+        // Events
+        // house_retal_events(result => {
+        //         console.log(result)
+        // })
+
+
+        // validator
+        var verifier = 'validator'
+        var verifier_privateKey = '5KhXePZRNU4ab8XJangvCEjuHN8L3K79fuNGVuvoRMx7g2gAi3g'
+        var event_id = 9
+        house_rental_validate(verifier,event_id,verifier_privateKey,result => {
+            console.log(result)
+        })
+    </script>
+</body>
+</html>
