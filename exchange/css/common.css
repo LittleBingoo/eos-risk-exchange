@@ -12,6 +12,10 @@ nav{
     background: #ffffff;
 }
 
+.modal-header{
+    border: none;
+}
+
 .modal-header > h4{
     font-size: 28px;
     line-height: 1.14;
@@ -24,8 +28,12 @@ nav{
     opacity:1;
 }
 
+.modal-body{
+    padding-top:0;
+}
+
 .dialog-input{
-    margin-top:32px;
+    margin-top:16px;
     border: 1px #000000 solid;
     height: 48px;
     font-weight: lighter;
