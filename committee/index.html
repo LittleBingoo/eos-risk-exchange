@@ -3,14 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <title>Hello World!</title>
+    <link href="css/common.css" rel="stylesheet" type="text/css" />
+    <title>Risk Committee</title>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">Eos Hackathon</div>
+        <div class="text-center"><b>Risk</b>Committee</div>
     </header>
+
+    <!-- Page -->
+    <div class="container" style="padding-top: 16px">
+        <div class="risks">
+            <div class="risks-header">
+                🏠 House Rental
+            </div>
+            <div class="risks-content">
+                <div class="risks-row">
+                    <div class="risks-title">Address</div>
+                    <div class="risks-value">33 Shing Fung Road, Kai Tak, Kowloon, Hong Kong</div>
+                </div>
+                <div class="risks-row">
+                    <div class="risks-title">Expiration Time</div>
+                    <div class="risks-value">2018-10-10 15:00:00</div>
+                </div>
+                <div class="risks-row">
+                    <div class="risks-title">Amount</div>
+                    <div class="risks-value">100 EOSrisk</div>
+                </div>
+                <div class="risks-row">
+                    <div class="risks-title">Price</div>
+                    <div class="risks-value">0.5000 EOS</div>
+                </div>
+            </div>
+            <div class="risks-footer">
+                <button class="approve-btn" data-id="1">Approve</button>
+                <button class="unapprove-btn" data-id="1">Unapprove</button>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js" ></script>
+<script>
+    $(function () {
+        $('.approve-btn').on('click',function () {
+            var id = $(this).attr('data-id');
+        })
+
+        $('.unapprove-btn').on('click',function () {
+            var id = $(this).attr('data-id');
+        })
+    })
+</script>
 </html>

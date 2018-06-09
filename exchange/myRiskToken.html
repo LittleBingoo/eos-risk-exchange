@@ -30,12 +30,36 @@
                     <a href="index.html"><img src="img/RiskExchange_logo.png" height="96px"/></a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Create Account <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="login-tab">
-                                <input type="text" value="Username">
+                    <li class="dropdown create-account-nav hide">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Create Account</a>
+                        <ul class="login-tab dropdown-menu">
+                            <li>
+                                <input type="text" name="create-account" id="create-account" placeholder="Enter your account name">
+                                <button class="create-account-btn">Create Account</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown user-control-nav hide">
+                        <a href="#" class="dropdown-toggle username-nav" data-toggle="dropdown" role="button"></a>
+                        <ul class="login-tab dropdown-menu">
+                            <li>
+                                <div class="row" style="margin-top: 24px">
+                                    <div class="login-tab-title">Public Key</div>
+                                    <div class="login-tab-value publickey-nav"></div>
+                                    <div class="copy-publickey-nav"><img src="img/copy.png" width="100%"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="login-tab-title">Private Key</div>
+                                    <div class="login-tab-value privatekey-nav"></div>
+                                    <div class="copy-privatekey-nav"><img src="img/copy.png" width="100%"></div>
+                                </div>
+                                <div class="row eos-balance-nav">
+                                    <div class="eos-balance-nav-value">50.0000 EOS</div>
+                                    <button class="get-free-btn pull-right">Get Free</button>
+                                </div>
+                                <div class="row logout-nav">
+                                    Logout
+                                </div>
                             </li>
                         </ul>
                     </li>
@@ -164,6 +188,7 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-select.min.js"></script>
+<script src="js/common.js"></script>
 <script>
     $(function () {
         $('.transfer-btn').on('click',function () {

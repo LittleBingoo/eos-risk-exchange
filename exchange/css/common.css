@@ -1,9 +1,72 @@
 /** Normal **/
 
 .login-tab{
-    width: 100px;
-    height: 300px;
+    width:200%;
+    max-width: 600px;
+    min-width: 320px;
 }
+.login-tab > li{
+    padding: 0 32px;
+}
+.login-tab > li > input{
+    width: 100%;
+    margin-top:24px;
+    height: 32px;
+}
+
+.login-tab > li > button{
+    margin-top:16px;
+    margin-bottom: 24px;
+    background: #000000;
+    color:#ffffff;
+    padding: 6px 16px;
+    font-size: 16px;
+}
+
+.login-tab-title{
+    display: inline-block;
+    width: 30%;
+    float: left;
+}
+
+.login-tab-value{
+    display: inline-block;
+    width: 65%;
+    float: left;
+}
+
+.eos-balance-nav{
+    border-top: 1px rgba(0, 0, 0, 0.1) solid;
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+    padding: 20px 0;
+    margin-top:32px;
+}
+
+.eos-balance-nav-value{
+    display: inline-block;
+}
+
+.get-free-btn{
+    display: inline-block;
+    background: #000000;
+    color:#ffffff;
+}
+.logout-nav{
+    padding: 24px 0;
+}
+
+.copy-privatekey-nav{
+    width: 5%;
+    display: inline-block;
+    float: right;
+}
+
+.copy-publickey-nav{
+    width: 5%;
+    display: inline-block;
+    float: right;
+}
+
 nav{
     margin-bottom: 0 !important;
 }
