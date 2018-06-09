@@ -1,3 +1,5 @@
+/** Normal **/
+
 .login-tab{
     width: 100px;
     height: 300px;
@@ -9,12 +11,68 @@ nav{
     position: relative;
     background: #ffffff;
 }
+
+.modal-header > h4{
+    font-size: 28px;
+    line-height: 1.14;
+}
+
+.modal-header > .close{
+    font-size: 28px;
+    line-height: 1.14;
+    color:#000000;
+    opacity:1;
+}
+
+.dialog-input{
+    margin-top:32px;
+    border: 1px #000000 solid;
+    height: 48px;
+    font-weight: lighter;
+}
+
+.dialog-input > .input-group > .input-group-addon{
+    border: none;
+    background: none;
+    line-height: 1.25;
+    font-size: 16px;
+}
+
+.dialog-input > .input-group > input{
+    border: none;
+    box-shadow: none;
+    background: none;
+    line-height: 1.25;
+    font-size: 16px;
+    height: 48px;
+}
+
+.modal-footer > button{
+    background: #000000;
+    color:#ffffff;
+    padding:14px 36px;
+}
+
+footer{
+    margin-top: 118px;
+    background: #000000;
+    height: 168px;
+    line-height: 168px;
+    color:#ffffff;
+    padding-left: 80px;
+}
+
+
+/** Index **/
 @media screen and (min-width: 768px) {
     .nav > li{
         height: 96px;
     }
     .nav > li:hover{
         background: #777;
+    }
+    .nav > .active{
+        border-bottom: 1px #000000 solid;
     }
     .nav > li > a{
         height: 96px;
@@ -24,6 +82,9 @@ nav{
     }
     .nav > li > a:hover{
         color: #ffffff !important;
+    }
+    .nav > .active > a{
+        background-color: transparent !important;
     }
     .brand {
         position: absolute;
@@ -153,13 +214,101 @@ nav{
     margin-top: 12px;
 }
 
+/** My Risk Token **/
 
+.risks{
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-left: 32px;
+    padding-bottom: 16px;
+    width: 60%;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    margin-top: 32px;
+}
 
-footer{
-    margin-top: 118px;
+.risks-header{
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+.risks-row{
+    margin-bottom: 8px;
+}
+
+.risks-content{
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+    padding-bottom: 15px;
+}
+
+.risks-title{
+    display: inline-block;
+    width: 35%;
+    font-weight: 500;
+    vertical-align: top;
+}
+
+.risks-value{
+    display: inline-block;
+    width: 60%;
+    vertical-align: top;
+}
+
+.risks-footer{
+    margin-top:16px;
+}
+
+.risks-footer > button{
+    margin-right: 16px;
     background: #000000;
-    height: 168px;
-    line-height: 168px;
     color:#ffffff;
-    padding-left: 80px;
+    font-size: 16px;
+    padding: 6px 17px;
+}
+
+/** Market **/
+
+.markets{
+    margin-top: 48px;
+}
+.market-card{
+    padding:20px 32px 24px;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 32px;
+}
+
+.market-title{
+    display: inline-block;
+    font-size: 20px;
+}
+
+.market-header > button{
+    margin-left: 16px;
+    background: #000000;
+    color:#ffffff;
+    font-size: 16px;
+    padding: 6px 17px;
+    width: 96px;
+    height: 32px;
+    line-height: 1.25;
+    float: right;
+}
+
+.market-body{
+    margin-top: 16px;
+}
+
+.market-body-row{
+    margin-top: 8px;
+}
+.market-body-title{
+    display: inline-block;
+    width: 35%;
+    font-weight: 500;
+    vertical-align: top;
+}
+
+.market-body-value{
+    display: inline-block;
+    width: 60%;
+    vertical-align: top;
 }
