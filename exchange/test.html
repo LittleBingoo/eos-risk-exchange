@@ -73,10 +73,27 @@
         // })
 
         // Transfer RNT
-        var from = 'alice';
-        var to = 'abcdefgh1223';
-        var from_privateKey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC';
-        house_rental_rnt_transfer(from,to,10,from_privateKey,function (result) {
+        // var from = 'alice';
+        // var to = 'abcdefgh1223';
+        // var from_privateKey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC';
+        // house_rental_rnt_transfer(from,to,10,from_privateKey,function (result) {
+        //     console.log(result)
+        // })
+
+        /**
+         *  House Rental - Apply
+         *  @param applicants     申请者
+         *  @param address        房屋地址
+         *  @param content        风险类型
+         *  @param applicants_privateKey      转账方私钥
+         *  @param callback callback
+         * */
+        //House Rental - Apply
+        var applicants = 'alice';
+        var address = 'abcdefgh1223';
+        var content = 'abcdefgh1223';
+        var applicants_privateKey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC';
+        house_rental_rnt_apply(applicants,address,content,applicants_privateKey,function (result) {
             console.log(result)
         })
 
