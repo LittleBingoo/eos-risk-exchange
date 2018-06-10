@@ -20,8 +20,8 @@
         var alice = 'alice'
         var alice_privatekey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC'
         // keys
-        // eos_randomAccount(alice,'abcdefgh1223',alice_privatekey,result => {
-        //     console.log('name:'+result.name+',privateKey:'+result.privateKey,',publicKey:'+result.publicKey)
+        // eos_randomAccount(alice,'yuzhiyou1114',alice_privatekey,function(result){
+        //     console.log('name:'+result.message.name+',privateKey:'+result.message.privateKey,',publicKey:'+result.message.publicKey)
         // })
 
         // Balance
@@ -77,7 +77,8 @@
         var verifier = 'validator'
         var verifier_privateKey = '5KhXePZRNU4ab8XJangvCEjuHN8L3K79fuNGVuvoRMx7g2gAi3g'
         var event_id = 9
-        house_rental_validate(verifier,event_id,verifier_privateKey,result => {
+        var event_status = 2; // 状态  0-不同意、1-申请、2-同意
+        house_rental_validate(verifier,event_id,event_status,verifier_privateKey,result => {
             console.log(result)
         })
     </script>
