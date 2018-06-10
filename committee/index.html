@@ -55,19 +55,44 @@
                  var length = result.message.rows.length;
                  for (var i = length-1; i >= 0; i--){
                      var riskInfo = result.message.rows[i];
-                     addRisk(riskInfo.id,riskInfo.content,riskInfo.address,riskInfo.event_time);
+                     if(riskInfo.confirmed == 1){
+                         addRisk(riskInfo.id,riskInfo.content,riskInfo.address,riskInfo.event_time);
+                     }
                  }
              }else{
                  alert('Please Try Again');
              }
          })
         $(document).on('click','.approve-btn',function () {
-            var id = $(this).attr('data-id');
-            alert(id);
+                var id = $(this).attr('data-id');
+                // validator
+                var verifier = 'validator';
+                var verifier_privateKey = '5KhXePZRNU4ab8XJangvCEjuHN8L3K79fuNGVuvoRMx7g2gAi3g';
+                var event_id = id;
+                var event_status = 2;
+                house_rental_validate(verifier,event_id,event_status,verifier_privateKey,function (result) {
+                    if(result.status){
+                        alert('Success')
+                    }else{
+                        alert('failed');
+                    }
+                })
         })
 
         $(document).on('click','.unapprove-btn',function () {
             var id = $(this).attr('data-id');
+            // validator
+            var verifier = 'validator';
+            var verifier_privateKey = '5KhXePZRNU4ab8XJangvCEjuHN8L3K79fuNGVuvoRMx7g2gAi3g';
+            var event_id = id;
+            var event_status = 0;
+            house_rental_validate(verifier,event_id,event_status,verifier_privateKey,function (result) {
+                if(result.status){
+                    alert('Success')
+                }else{
+                    alert('failed');
+                }
+            })
         })
     })
 </script>

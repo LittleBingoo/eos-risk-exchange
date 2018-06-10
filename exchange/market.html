@@ -72,116 +72,6 @@
 <!-- Page -->
 <div class="container">
     <div class="markets">
-        <div class="col-md-6">
-            <div class="market-card">
-                <div class="market-header">
-                    <div class="market-title">🏠 House Rental</div>
-                    <button>Buy</button>
-                </div>
-                <div class="market-body">
-                    <div class="market-body-row">
-                        <div class="market-body-title">Address</div>
-                        <div class="market-body-value">33 Shing Fung Road, Kai Tak, Kowloon, Hong Kong</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Expiration Time</div>
-                        <div class="market-body-value">2018-10-10 15:00:00</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Amount</div>
-                        <div class="market-body-value">100 EOSrisk</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Price</div>
-                        <div class="market-body-value">0.5000 EOS</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="market-card">
-                <div class="market-header">
-                    <div class="market-title">🏠 House Rental</div>
-                    <button>Buy</button>
-                </div>
-                <div class="market-body">
-                    <div class="market-body-row">
-                        <div class="market-body-title">Address</div>
-                        <div class="market-body-value">33 Shing Fung Road, Kai Tak, Kowloon, Hong Kong</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Expiration Time</div>
-                        <div class="market-body-value">2018-10-10 15:00:00</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Amount</div>
-                        <div class="market-body-value">100 EOSrisk</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Price</div>
-                        <div class="market-body-value">0.5000 EOS</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-6">
-            <div class="market-card">
-                <div class="market-header">
-                    <div class="market-title">🏠 House Rental</div>
-                    <button>Buy</button>
-                </div>
-                <div class="market-body">
-                    <div class="market-body-row">
-                        <div class="market-body-title">Address</div>
-                        <div class="market-body-value">33 Shing Fung Road, Kai Tak, Kowloon, Hong Kong</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Expiration Time</div>
-                        <div class="market-body-value">2018-10-10 15:00:00</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Amount</div>
-                        <div class="market-body-value">100 EOSrisk</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Price</div>
-                        <div class="market-body-value">0.5000 EOS</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-6">
-            <div class="market-card">
-                <div class="market-header">
-                    <div class="market-title">🏠 House Rental</div>
-                    <button>Buy</button>
-                </div>
-                <div class="market-body">
-                    <div class="market-body-row">
-                        <div class="market-body-title">Address</div>
-                        <div class="market-body-value">33 Shing Fung Road, Kai Tak, Kowloon, Hong Kong</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Expiration Time</div>
-                        <div class="market-body-value">2018-10-10 15:00:00</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Amount</div>
-                        <div class="market-body-value">100 EOSrisk</div>
-                    </div>
-                    <div class="market-body-row">
-                        <div class="market-body-title">Price</div>
-                        <div class="market-body-value">0.5000 EOS</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
     </div>
 </div>
@@ -200,9 +90,80 @@
 <script src="js/clipboard.min.js"></script>
 <script src="js/common.js"></script>
 <script>
-     //get market list
-     house_rental_events(function (result) {
+    function addMarkets(seller,content,address,expireation,amount,price) {
+        var unixTimestamp = new Date(expireation * 1000);
+        var commonTime = unixTimestamp.toLocaleString();
 
-     })
+        var domStr = '\
+        <div class="col-md-6">\
+            <div class="market-card">\
+            <div class="market-header">\
+            <div class="market-title">'+content+'</div>\
+        <button class="buy-btn" data-seller="'+seller+'" data-number="'+amount+'">Buy</button>\
+        </div>\
+        <div class="market-body">\
+            <div class="market-body-row">\
+            <div class="market-body-title">Address</div>\
+            <div class="market-body-value">'+address+'</div>\
+        </div>\
+        <div class="market-body-row">\
+            <div class="market-body-title">Expiration Time</div>\
+        <div class="market-body-value">'+commonTime+'</div>\
+        </div>\
+        <div class="market-body-row">\
+            <div class="market-body-title">Amount</div>\
+            <div class="market-body-value">'+amount+'</div>\
+        </div>\
+        <div class="market-body-row">\
+            <div class="market-body-title">Price</div>\
+            <div class="market-body-value">'+price+'</div>\
+        </div>\
+        </div>\
+        </div>\
+        </div>\
+        ';
+
+        $('.markets').append(domStr);
+
+    }
+
+    $(function () {
+        //get market list
+        house_rental_joined(function (result) {
+            var rows = result.message.rows;
+            for (var i = 0; i < rows.length; i++) {
+                if (rows[i].sell_num > 0) {
+                    var row = rows[i];
+                    addMarkets(row.owner,row.content,row.address,row.expiration,row.sell_num,row.ask);
+                }
+            }
+        })
+
+        //buy
+        $(document).on('click','.buy-btn',function () {
+            var seller = $(this).attr('data-seller');
+            var amount = $(this).attr('data-number');
+            if(loginUser){
+                if(seller && amount){
+                    var buyer = loginUser.username;
+                    var from = seller;
+                    var number = amount;
+                    var buyer_privateKey = loginUser.privateKey;
+
+                    house_rental_rnt_buy(buyer,from,number,buyer_privateKey,function (result) {
+                        if(result.status){
+                            alert('Success');
+                        }else{
+                            alert('Failed');
+                        }
+                    })
+                }else{
+                    alert('Failed');
+                }
+            }else{
+                alert('Login First');
+            }
+        });
+    })
 </script>
 </html>
