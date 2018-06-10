@@ -190,14 +190,15 @@ function house_rental_rnt_transfer(from,to,amount,from_privateKey,callback) {
         actions: [
             {
                 account: 'mutualaideos',
-                name: 'transfer_rnt',
+                name: 'transfer',
                 authorization: [{
                     actor: from,
                     permission: 'active'
                 }],
                 data: {
                     from: from,
-                    amount: amount
+                    to: to,
+                    number: amount
                 }
             }
         ]
