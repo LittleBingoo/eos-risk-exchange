@@ -34,7 +34,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Create Account</a>
                         <ul class="login-tab dropdown-menu">
                             <li>
-                                <input type="text" name="create-account" id="create-account" placeholder="Enter your account name">
+                                <input type="text" name="create-account" id="create-account"
+                                       placeholder="Enter your account name">
                                 <button class="create-account-btn">Create Account</button>
                             </li>
                         </ul>
@@ -141,7 +142,7 @@
                 </div>
                 <div class="form-group dialog-input">
                     <div class="input-group">
-                        <div class="input-group-addon">Price:</div>
+                        <div class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;Price:</div>
                         <input type="number" class="form-control" id="sale-prize">
                     </div>
                 </div>
@@ -166,32 +167,33 @@
 <script src="js/ecc.js"></script>
 <script src="js/eosjs-browser.js"></script>
 <script src="js/risk.js"></script>
+<script src="js/clipboard.min.js"></script>
 <script src="js/common.js"></script>
 <script>
     $(function () {
-        $(document).on('click','.transfer-btn',function () {
+        $(document).on('click', '.transfer-btn', function () {
             var id = $(this).attr('data-id');
             $('#transfer-model').modal('show')
         });
 
-        $(document).on('click','.apply-btn',function () {
+        $(document).on('click', '.apply-btn', function () {
             var id = $(this).attr('data-id');
             $('#apply-model').modal('show')
         });
 
-        $(document).on('click','.sale-btn',function () {
+        $(document).on('click', '.sale-btn', function () {
             var id = $(this).attr('data-id');
             $('#sale-model').modal('show');
         });
 
-        $(document).on('click','.sale-model-ok',function () {
+        $(document).on('click', '.sale-model-ok', function () {
             var number = $('#sale-number').val();
-            var price = $('#sale-prize').val()+' EOS';
-            house_rental_rnt_sale(loginUser.username,number,price,loginUser.privateKey,function (result) {
-                if(result.status){
+            var price = $('#sale-prize').val() + ' EOS';
+            house_rental_rnt_sale(loginUser.username, number, price, loginUser.privateKey, function (result) {
+                if (result.status) {
                     alert('Success');
                     window.location.reload();
-                }else{
+                } else {
                     alert('failed');
                 }
             })
@@ -199,43 +201,51 @@
 
 
         //Joined
-        if(loginUser.username){
+        if (loginUser.username) {
             house_rental_joined(function (result) {
                 var rows = result.message.rows;
-                for(var i=0; i < rows.length; i++){
-                    if(rows[i].owner == loginUser.username){
+                for (var i = 0; i < rows.length; i++) {
+                    if (rows[i].owner == loginUser.username) {
                         var unixTimestamp = new Date(rows[i].expiration * 1000);
                         var commonTime = unixTimestamp.toLocaleString();
                         var domStr = '\
                             <div class="risks-header">\
-                            '+rows[i].content+'\
+                            ' + rows[i].content + '\
                         </div>\
                         <div class="risks-content">\
                             <div class="risks-row">\
                             <div class="risks-title">Address</div>\
                             <div class="risks-value">\
-                            '+rows[i].address+'</div>\
+                            ' + rows[i].address + '</div>\
                         </div>\
                         <div class="risks-row">\
                             <div class="risks-title">Expiration Time</div>\
-                        <div class="risks-value">'+commonTime+'</div>\
+                        <div class="risks-value">' + commonTime + '</div>\
                         </div>\
                         <div class="risks-row">\
                             <div class="risks-title">Amount</div>\
-                            <div class="risks-value">'+rows[i].risk_balance+'</div>\
-                        </div>\
-                        <div class="risks-row">\
-                            <div class="risks-title">Price</div>\
-                            <div class="risks-value">'+rows[i].ask+'</div>\
-                        </div>\
-                        </div>\
-                        <div class="risks-footer">\
-                            <button class="transfer-btn" data-id="'+rows[i].owner+'">Transfer</button>\
-                            <button class="apply-btn" data-id="'+rows[i].owner+'">Apply</button>\
-                            <button class="sale-btn" data-id="'+rows[i].owner+'">Sale</button>\
+                            <div class="risks-value">' + rows[i].risk_balance + '</div>\
+                        </div>';
+                        if (rows[i].sell_num > 0) {
+                            domStr += '\
+                            <div class="risks-row">\
+                                <div class="risks-title">Sell</div>\
+                                <div class="risks-value">' + rows[i].sell_num + '</div>\
                             </div>\
+                            <div class="risks-row">\
+                                <div class="risks-title">Price</div>\
+                                <div class="risks-value">' + rows[i].ask + '</div>\
+                           </div>\
                         ';
+                        }
 
+                        domStr += '\
+                        </div>\
+                            <div class="risks-footer">\
+                                <button class="transfer-btn" data-id="' + rows[i].owner + '">Transfer</button>\
+                                <button class="apply-btn" data-id="' + rows[i].owner + '">Apply</button>\
+                                <button class="sale-btn" data-id="' + rows[i].owner + '">Sale</button>\
+                            </div>';
                         $('.risks').append(domStr);
                     }
                 }

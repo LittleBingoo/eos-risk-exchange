@@ -45,13 +45,16 @@ $(function () {
         event.stopPropagation();
     })
 
-    $('.copy-publickey-nav').on('click',function () {
+    new Clipboard('.copy-publickey-nav');
+    new Clipboard('.copy-privatekey-nav');
 
-    })
+    // $('.copy-publickey-nav').on('click',function () {
+    //     new Clipboard('. publickey-nav');
+    // })
 
-    $('.copy-privatekey-nav').on('click',function () {
-
-    })
+    // $('.copy-privatekey-nav').on('click',function () {
+    //     new Clipboard('. privatekey-nav');
+    // })
 
     $('.create-account-btn').on('click',function () {
         var account = $('#create-account').val();

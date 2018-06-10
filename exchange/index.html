@@ -45,13 +45,13 @@
                             <li>
                                 <div class="row" style="margin-top: 24px">
                                     <div class="login-tab-title">Public Key</div>
-                                    <div class="login-tab-value publickey-nav"></div>
-                                    <div class="copy-publickey-nav"><img src="img/copy.png" width="100%"></div>
+                                    <div class="login-tab-value publickey-nav" id="publickey-nav"></div>
+                                    <div class="copy-publickey-nav" data-clipboard-target="#publickey-nav"><img src="img/copy.png" width="100%"></div>
                                 </div>
                                 <div class="row">
                                     <div class="login-tab-title">Private Key</div>
-                                    <div class="login-tab-value privatekey-nav"></div>
-                                    <div class="copy-privatekey-nav"><img src="img/copy.png" width="100%"></div>
+                                    <div class="login-tab-value privatekey-nav" id="privatekey-nav"></div>
+                                    <div class="copy-privatekey-nav" data-clipboard-target="#privatekey-nav"><img src="img/copy.png" width="100%"></div>
                                 </div>
                                 <div class="row eos-balance-nav">
                                     <div class="eos-balance-nav-value">Loading...</div>
@@ -149,5 +149,6 @@
 <script src="js/ecc.js"></script>
 <script src="js/eosjs-browser.js"></script>
 <script src="js/risk.js"></script>
+<script src="js/clipboard.min.js"></script>
 <script src="js/common.js"></script>
 </html>

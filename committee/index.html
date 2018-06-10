@@ -13,45 +13,60 @@
     </header>
 
     <!-- Page -->
-    <div class="container" style="padding-top: 16px">
-        <div class="risks">
-            <div class="risks-header">
-                🏠 House Rental
-            </div>
-            <div class="risks-content">
-                <div class="risks-row">
-                    <div class="risks-title">Address</div>
-                    <div class="risks-value">33 Shing Fung Road, Kai Tak, Kowloon, Hong Kong</div>
-                </div>
-                <div class="risks-row">
-                    <div class="risks-title">Expiration Time</div>
-                    <div class="risks-value">2018-10-10 15:00:00</div>
-                </div>
-                <div class="risks-row">
-                    <div class="risks-title">Amount</div>
-                    <div class="risks-value">100 EOSrisk</div>
-                </div>
-                <div class="risks-row">
-                    <div class="risks-title">Price</div>
-                    <div class="risks-value">0.5000 EOS</div>
-                </div>
-            </div>
-            <div class="risks-footer">
-                <button class="approve-btn" data-id="1">Approve</button>
-                <button class="unapprove-btn" data-id="1">Unapprove</button>
-            </div>
-        </div>
+    <div class="container" id="riskList" style="padding-top: 16px">
+
     </div>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js" ></script>
+<script src="js/ecc.js"></script>
+<script src="js/eosjs-browser.js"></script>
+<script src="js/risk.js"></script>
 <script>
+    function addRisk(id,content,address,eventTime) {
+        var date = new Date(eventTime * 1000).toLocaleString();
+        domStr = '        <div class="risks">\
+            <div class="risks-header">\
+                '+content+'\
+        </div>\
+        <div class="risks-content">\
+            <div class="risks-row">\
+            <div class="risks-title">Address</div>\
+            <div class="risks-value">'+address+'</div>\
+        </div>\
+        <div class="risks-row">\
+            <div class="risks-title">Apply Time</div>\
+        <div class="risks-value">'+date+'</div>\
+        </div>\
+        </div>\
+        <div class="ris\ks-footer">\
+            <button class="approve-btn" data-id="'+id+'">Approve</button>\
+            <button class="unapprove-btn" data-id="'+id+'">Unapprove</button>\
+            </div>\
+        </div>';
+
+        $('#riskList').append(domStr);
+    }
     $(function () {
-        $('.approve-btn').on('click',function () {
+        //get list
+         house_rental_events(function (result) {
+             console.log(result);
+             if(result.status){
+                 var length = result.message.rows.length;
+                 for (var i = length-1; i >= 0; i--){
+                     var riskInfo = result.message.rows[i];
+                     addRisk(riskInfo.id,riskInfo.content,riskInfo.address,riskInfo.event_time);
+                 }
+             }else{
+                 alert('Please Try Again');
+             }
+         })
+        $(document).on('click','.approve-btn',function () {
             var id = $(this).attr('data-id');
+            alert(id);
         })
 
-        $('.unapprove-btn').on('click',function () {
+        $(document).on('click','.unapprove-btn',function () {
             var id = $(this).attr('data-id');
         })
     })

@@ -11,7 +11,33 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1528598076142" expanded="true" signature="848:1114" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="848:1130" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="848:1218" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="848:1267" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="848:1283" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="848:1299" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="848:1527" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="888:906" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="888:933" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="970:1114" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="1007:1114" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="1164:1218" ph="..." />
+                <marker date="1528598076142" expanded="true" signature="1337:1511" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -36,8 +62,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="57" />
-    <option name="y" value="291" />
+    <option name="x" value="66" />
+    <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="638" />
   </component>
@@ -191,18 +217,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528549539421</updated>
-      <workItem from="1528549540801" duration="3207000" />
+      <workItem from="1528549540801" duration="6166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3207000" />
+    <option name="totallyTimeSpent" value="6166000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="291" width="1280" height="638" extended-state="0" />
+    <frame x="66" y="23" width="1280" height="638" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -232,21 +258,34 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="35" column="42" lean-forward="true" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1528598076142" expanded="true" signature="848:1114" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="848:1130" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="848:1218" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="848:1267" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="848:1283" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="848:1299" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="848:1527" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="888:906" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="888:933" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="970:1114" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="1007:1114" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="1164:1218" ph="..." />
+            <marker date="1528598076142" expanded="true" signature="1337:1511" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
