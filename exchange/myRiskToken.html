@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn pull-left">OK</button>
+                <button type="button" class="btn pull-left transfer-model-ok">OK</button>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@
                 Are You Sure?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn pull-left">OK</button>
+                <button type="button" class="btn pull-left apply-model-ok">OK</button>
             </div>
         </div>
     </div>
@@ -178,6 +178,8 @@
 
         $(document).on('click', '.apply-btn', function () {
             var id = $(this).attr('data-id');
+            apply_address = $(this).attr('data-address');
+            apply_content = $(this).attr('data-content');
             $('#apply-model').modal('show')
         });
 
@@ -190,6 +192,46 @@
             var number = $('#sale-number').val();
             var price = $('#sale-prize').val() + ' EOS';
             house_rental_rnt_sale(loginUser.username, number, price, loginUser.privateKey, function (result) {
+                if (result.status) {
+                    alert('Success');
+                    window.location.reload();
+                } else {
+                    alert('failed');
+                }
+            })
+        });
+
+        $(document).on('click','.transfer-model-ok',function () {
+            var from = loginUser.username;
+            var to = $('#transfer-account').val();
+            var number = $('#transfer-number').val();
+            var from_privateKey = loginUser.privateKey;
+
+            if(!to || !number){
+                alert('Please input account and number first');
+                return false;
+            }
+
+            house_rental_rnt_transfer(from,to,number,from_privateKey,function (result) {
+                if (result.status) {
+                    alert('Success');
+                    window.location.reload();
+                } else {
+                    alert('failed');
+                }
+            })
+        });
+
+
+        $(document).on('click','.apply-model-ok',function () {
+            var applicants = loginUser.username;
+            var applicants_privateKey = loginUser.privateKey;
+
+            var address = 'abcdefgh1223';
+            var content = 'abcdefgh1223';
+
+
+            house_rental_rnt_apply(applicants,address,content,applicants_privateKey,function (result) {
                 if (result.status) {
                     alert('Success');
                     window.location.reload();
@@ -243,7 +285,7 @@
                         </div>\
                             <div class="risks-footer">\
                                 <button class="transfer-btn" data-id="' + rows[i].owner + '">Transfer</button>\
-                                <button class="apply-btn" data-id="' + rows[i].owner + '">Apply</button>\
+                                <button class="apply-btn" data-id="' + rows[i].owner + '" data-address="' + rows[i].address + '" data-content="' + rows[i].content + '">Apply</button>\
                                 <button class="sale-btn" data-id="' + rows[i].owner + '">Sale</button>\
                             </div>';
                         $('.risks').append(domStr);

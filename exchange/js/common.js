@@ -45,8 +45,8 @@ $(function () {
         event.stopPropagation();
     })
 
-    new Clipboard('.copy-publickey-nav');
-    new Clipboard('.copy-privatekey-nav');
+    // new Clipboard('.copy-publickey-nav');
+    // new Clipboard('.copy-privatekey-nav');
 
     // $('.copy-publickey-nav').on('click',function () {
     //     new Clipboard('. publickey-nav');
@@ -110,7 +110,7 @@ $(function () {
         house_rental_join(renter,rent_address,rent_type,renter_privatekey,function (result) {
             if(result.status){
                 alert('Success');
-                window.location.reload();
+                window.location.href="myRiskToken.html";
             }else{
                 alert('Failed');
             }
