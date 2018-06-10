@@ -72,7 +72,8 @@
                 var event_status = 2;
                 house_rental_validate(verifier,event_id,event_status,verifier_privateKey,function (result) {
                     if(result.status){
-                        alert('Success')
+                        alert('Success');
+                        window.location.reload();
                     }else{
                         alert('failed');
                     }
@@ -89,6 +90,7 @@
             house_rental_validate(verifier,event_id,event_status,verifier_privateKey,function (result) {
                 if(result.status){
                     alert('Success')
+                    window.location.reload();
                 }else{
                     alert('failed');
                 }

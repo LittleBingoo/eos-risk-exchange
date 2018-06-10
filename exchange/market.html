@@ -152,6 +152,7 @@
 
                     house_rental_rnt_buy(buyer,from,number,buyer_privateKey,function (result) {
                         if(result.status){
+                            window.location.reload();
                             alert('Success');
                         }else{
                             alert('Failed');

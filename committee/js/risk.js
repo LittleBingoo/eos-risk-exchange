@@ -352,11 +352,11 @@ function house_rental_events(callback) {
  *  House Rental - validate
  *  @param verifier 验证管理员
  *  @param event_id 验证事件ID
- *  @param status 状态  0-不同意、1-申请、2-同意
+ *  @param event_status 状态  0-不同意、1-申请、2-同意
  *  @param verifier_privateKey 验证管理员私钥
  *  @param callback callback
  * */
-function house_rental_validate(verifier,event_id,stauts,verifier_privateKey,callback) {
+function house_rental_validate(verifier,event_id,event_status,verifier_privateKey,callback) {
     var eos = getEOS(verifier_privateKey);
     eos.transaction({
         actions: [
@@ -370,7 +370,7 @@ function house_rental_validate(verifier,event_id,stauts,verifier_privateKey,call
                 data: {
                     verifier: verifier,
                     event_id: event_id,
-                    status: status
+                    status: event_status
                 }
             }
         ]
