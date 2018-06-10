@@ -33,6 +33,9 @@
     display: inline-block;
     width: 65%;
     float: left;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 
 .eos-balance-nav{

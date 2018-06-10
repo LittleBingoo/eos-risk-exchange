@@ -72,32 +72,7 @@
 <!-- Page -->
 <div class="container" style="padding-top: 16px">
     <div class="risks">
-        <div class="risks-header">
-            🏠 House Rental
-        </div>
-        <div class="risks-content">
-            <div class="risks-row">
-                <div class="risks-title">Address</div>
-                <div class="risks-value">33 Shing Fung Road, Kai Tak, Kowloon, Hong Kong</div>
-            </div>
-            <div class="risks-row">
-                <div class="risks-title">Expiration Time</div>
-                <div class="risks-value">2018-10-10 15:00:00</div>
-            </div>
-            <div class="risks-row">
-                <div class="risks-title">Amount</div>
-                <div class="risks-value">100 EOSrisk</div>
-            </div>
-            <div class="risks-row">
-                <div class="risks-title">Price</div>
-                <div class="risks-value">0.5000 EOS</div>
-            </div>
-        </div>
-        <div class="risks-footer">
-            <button class="transfer-btn" data-id="1">Transfer</button>
-            <button class="apply-btn" data-id="1">Apply</button>
-            <button class="sale-btn" data-id="1">Sale</button>
-        </div>
+
     </div>
 </div>
 
@@ -161,18 +136,18 @@
                 <div class="form-group dialog-input">
                     <div class="input-group">
                         <div class="input-group-addon">Number:</div>
-                        <input type="text" class="form-control" id="sale-number">
+                        <input type="number" class="form-control" id="sale-number">
                     </div>
                 </div>
                 <div class="form-group dialog-input">
                     <div class="input-group">
                         <div class="input-group-addon">Price:</div>
-                        <input type="text" class="form-control" id="sale-prize">
+                        <input type="number" class="form-control" id="sale-prize">
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn pull-left">OK</button>
+                <button type="button" class="btn pull-left sale-model-ok">OK</button>
             </div>
         </div>
     </div>
@@ -188,23 +163,84 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-select.min.js"></script>
+<script src="js/ecc.js"></script>
+<script src="js/eosjs-browser.js"></script>
+<script src="js/risk.js"></script>
 <script src="js/common.js"></script>
 <script>
     $(function () {
-        $('.transfer-btn').on('click',function () {
+        $(document).on('click','.transfer-btn',function () {
             var id = $(this).attr('data-id');
             $('#transfer-model').modal('show')
-        })
+        });
 
-        $('.apply-btn').on('click',function () {
+        $(document).on('click','.apply-btn',function () {
             var id = $(this).attr('data-id');
             $('#apply-model').modal('show')
-        })
+        });
 
-        $('.sale-btn').on('click',function () {
+        $(document).on('click','.sale-btn',function () {
             var id = $(this).attr('data-id');
-            $('#sale-model').modal('show')
-        })
+            $('#sale-model').modal('show');
+        });
+
+        $(document).on('click','.sale-model-ok',function () {
+            var number = $('#sale-number').val();
+            var price = $('#sale-prize').val()+' EOS';
+            house_rental_rnt_sale(loginUser.username,number,price,loginUser.privateKey,function (result) {
+                if(result.status){
+                    alert('Success');
+                    window.location.reload();
+                }else{
+                    alert('failed');
+                }
+            })
+        });
+
+
+        //Joined
+        if(loginUser.username){
+            house_rental_joined(function (result) {
+                var rows = result.message.rows;
+                for(var i=0; i < rows.length; i++){
+                    if(rows[i].owner == loginUser.username){
+                        var unixTimestamp = new Date(rows[i].expiration * 1000);
+                        var commonTime = unixTimestamp.toLocaleString();
+                        var domStr = '\
+                            <div class="risks-header">\
+                            '+rows[i].content+'\
+                        </div>\
+                        <div class="risks-content">\
+                            <div class="risks-row">\
+                            <div class="risks-title">Address</div>\
+                            <div class="risks-value">\
+                            '+rows[i].address+'</div>\
+                        </div>\
+                        <div class="risks-row">\
+                            <div class="risks-title">Expiration Time</div>\
+                        <div class="risks-value">'+commonTime+'</div>\
+                        </div>\
+                        <div class="risks-row">\
+                            <div class="risks-title">Amount</div>\
+                            <div class="risks-value">'+rows[i].risk_balance+'</div>\
+                        </div>\
+                        <div class="risks-row">\
+                            <div class="risks-title">Price</div>\
+                            <div class="risks-value">'+rows[i].ask+'</div>\
+                        </div>\
+                        </div>\
+                        <div class="risks-footer">\
+                            <button class="transfer-btn" data-id="'+rows[i].owner+'">Transfer</button>\
+                            <button class="apply-btn" data-id="'+rows[i].owner+'">Apply</button>\
+                            <button class="sale-btn" data-id="'+rows[i].owner+'">Sale</button>\
+                            </div>\
+                        ';
+
+                        $('.risks').append(domStr);
+                    }
+                }
+            })
+        }
     })
 </script>
 </html>

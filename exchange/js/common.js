@@ -9,6 +9,10 @@ $(function () {
 
     var createAccountNav = $('.create-account-nav');
 
+    var alice = 'alice'
+
+    var alice_privatekey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC'
+
     // login user
     var user = JSON.parse(localStorage.getItem("user"));
     if(user){
@@ -17,6 +21,19 @@ $(function () {
         $('.publickey-nav').html(loginUser.publicKey);
         $('.privatekey-nav').html(loginUser.privateKey);
         userControlNav.removeClass('hide');
+        
+        //User Balance
+        eos_balance(loginUser.username,function (result) {
+            var balanceValue = '0.0000 EOS';
+            if(result.status){
+                var balance = result.message;
+                if(balance.length > 0){
+                    balanceValue = balance[0]
+                }
+            }
+            $('.eos-balance-nav-value').html(balanceValue);
+        })
+
     }else{
         createAccountNav.removeClass('hide');
     }
@@ -39,19 +56,30 @@ $(function () {
     $('.create-account-btn').on('click',function () {
         var account = $('#create-account').val();
 
-        //reg
-        var user = {
-            username : account,
-            publicKey : 'abc',
-            privateKey : 'def',
+        if(!account){
+            alert('Please input your username');
         }
 
-        //save to local
-        var userString = JSON.stringify(user);
-        window.localStorage.setItem('user',userString);
+        eos_randomAccount(alice,account,alice_privatekey,function (result) {
+            if(!result.status){
+                alert('Internal Service Error');
+                return false;
+            }
+            //reg
+            var user = {
+                username : result.message.name,
+                publicKey : result.message.publicKey,
+                privateKey : result.message.privateKey,
+            }
 
-        //reload page
-        window.location.reload();
+            //save to local
+            var userString = JSON.stringify(user);
+            window.localStorage.setItem('user',userString);
+
+            //reload page
+            window.location.reload();
+        });
+
     })
 
     $('.logout-nav').on('click',function () {
@@ -59,4 +87,30 @@ $(function () {
         //reload page
         window.location.reload();
     })
+
+    $('.get-free-btn').on('click',function () {
+        eos_transfer(alice,loginUser.username,'50.0000 EOS','getFree',alice_privatekey,function (result) {
+            if(result.status){
+                alert('Success');
+                window.location.reload();
+            }else{
+                alert('Failed');
+            }
+        })
+    })
+
+    $('.join-rent').on('click',function () {
+        var renter = loginUser.username;
+        var rent_address = $('#input-join-rent').val();
+        var rent_type = $('#getEosrisk-type').val();
+        var renter_privatekey = loginUser.privateKey;
+        house_rental_join(renter,rent_address,rent_type,renter_privatekey,function (result) {
+            if(result.status){
+                alert('Success');
+                window.location.reload();
+            }else{
+                alert('Failed');
+            }
+        })
+    });
 })

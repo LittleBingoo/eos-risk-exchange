@@ -54,7 +54,7 @@
                                     <div class="copy-privatekey-nav"><img src="img/copy.png" width="100%"></div>
                                 </div>
                                 <div class="row eos-balance-nav">
-                                    <div class="eos-balance-nav-value">50.0000 EOS</div>
+                                    <div class="eos-balance-nav-value">Loading...</div>
                                     <button class="get-free-btn pull-right">Get Free</button>
                                 </div>
                                 <div class="row logout-nav">
@@ -78,18 +78,21 @@
     <div class="getEosrisk-board">
         <div class="getEosrisk-board-select">
             <select id="getEosrisk-type" class="selectpicker">
-                <option>House1</option>
-                <option>House2</option>
-                <option>House3</option>
+                <option>🏠 House Rental</option>
+                <option>🏊‍ Enthusiastic Divers</option>
+                <option>💉 Serious Illness</option>
+                <option>🚗 Supercar Owners</option>
+                <option>🌨 Disastrous Weather</option>
+                <option>💰 Virtual Currency</option>
             </select>
         </div>
         <div class="form-group getEosrisk-board-input">
             <div class="input-group">
                 <div class="input-group-addon">Address:</div>
-                <input type="text" class="form-control" id="exampleInputAmount">
+                <input type="text" class="form-control" id="input-join-rent">
             </div>
         </div>
-        <button class="getEosrisk-board-button">Pay 1 EOS Get 100 EOSrisk</button>
+        <button class="getEosrisk-board-button join-rent">Pay 1 EOS Get 100 EOSrisk</button>
     </div>
 </div>
 <div class="container houseRental">
@@ -143,5 +146,8 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-select.min.js"></script>
+<script src="js/ecc.js"></script>
+<script src="js/eosjs-browser.js"></script>
+<script src="js/risk.js"></script>
 <script src="js/common.js"></script>
 </html>
