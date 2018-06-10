@@ -46,18 +46,18 @@ function eos_randomAccount(creator,name,creator_privateKey,callback){
                 owner: publicKey,
                 active: publicKey
             }),
-            tr.buyrambytes({
-                payer: creator,
-                receiver: name,
-                bytes: 8192
-            }),
-            tr.delegatebw({
-                from: creator,
-                receiver: name,
-                stake_net_quantity: '0.0100 SYS',
-                stake_cpu_quantity: '0.0100 SYS',
-                transfer: 0
-            })
+                tr.buyrambytes({
+                    payer: creator,
+                    receiver: name,
+                    bytes: 8192
+                }),
+                tr.delegatebw({
+                    from: creator,
+                    receiver: name,
+                    stake_net_quantity: '0.0100 SYS',
+                    stake_cpu_quantity: '0.0100 SYS',
+                    transfer: 0
+                })
         }).then(function(result) {
             callback({status:true,message:{'name':name,'publicKey':publicKey,'privateKey':privateKey}})
         }).catch(function(err) {
@@ -118,7 +118,7 @@ function house_rental_join(renter,address,content,renter_privateKey,callback) {
         "threshold": 1,
         "keys": [
             {"key": renterPublicKey,"weight": 1}
-            ],
+        ],
         "accounts": [
             {"permission":{"actor":"mutualaideos","permission":"eosio.code"},"weight":1}]
     }
@@ -132,30 +132,30 @@ function house_rental_join(renter,address,content,renter_privateKey,callback) {
     }).then(function(result) {
         eos.transaction({
             actions: [
-            {
-                account: 'mutualaideos',
-                name: 'join',
-                authorization: [{
-                    actor: renter,
-                    permission: 'active'
-                }],
-                data: {
-                    renter: renter,
-                    address: address,
-                    content: content,
-                    quantity: '1.0000 EOS'
+                {
+                    account: 'mutualaideos',
+                    name: 'join',
+                    authorization: [{
+                        actor: renter,
+                        permission: 'active'
+                    }],
+                    data: {
+                        renter: renter,
+                        address: address,
+                        content: content,
+                        quantity: '1.0000 EOS'
+                    }
                 }
-            }
             ]
-         }).then(function(result2) {
+        }).then(function(result2) {
             callback({status:true,message:result2})
-         }).catch(function(err) {
+        }).catch(function(err) {
             reject(err,callback)
-         })
+        })
     }).catch(function(err) {
         reject(err,callback)
     })
-    
+
 }
 
 /**
@@ -190,14 +190,15 @@ function house_rental_rnt_transfer(from,to,amount,from_privateKey,callback) {
         actions: [
             {
                 account: 'mutualaideos',
-                name: 'transfer_rnt',
+                name: 'transfer',
                 authorization: [{
                     actor: from,
                     permission: 'active'
                 }],
                 data: {
                     from: from,
-                    amount: amount
+                    to: to,
+                    number: amount
                 }
             }
         ]
