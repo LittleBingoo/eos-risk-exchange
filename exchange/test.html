@@ -72,15 +72,22 @@
         //         console.log(result)
         // })
 
-
-        // validator
-        var verifier = 'validator'
-        var verifier_privateKey = '5KhXePZRNU4ab8XJangvCEjuHN8L3K79fuNGVuvoRMx7g2gAi3g'
-        var event_id = 9
-        var event_status = 2; // 状态  0-不同意、1-申请、2-同意
-        house_rental_validate(verifier,event_id,event_status,verifier_privateKey,result => {
+        // Transfer RNT
+        var from = 'alice';
+        var to = 'abcdefgh1223';
+        var from_privateKey = '5K6uR32fPrvfiysgdJEt62U53txKVgQr31TvouwCcjBe6D2zbQC';
+        house_rental_rnt_transfer(from,to,10,from_privateKey,function (result) {
             console.log(result)
         })
+
+        // validator
+        // var verifier = 'validator'
+        // var verifier_privateKey = '5KhXePZRNU4ab8XJangvCEjuHN8L3K79fuNGVuvoRMx7g2gAi3g'
+        // var event_id = 9
+        // var event_status = 2; // 状态  0-不同意、1-申请、2-同意
+        // house_rental_validate(verifier,event_id,event_status,verifier_privateKey,result => {
+        //     console.log(result)
+        // })
     </script>
 </body>
 </html>
