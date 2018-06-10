@@ -1,5 +1,5 @@
 var chain_id = 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f'
-var httpEndpoint = 'http://47.97.76.2:8888'
+var httpEndpoint = 'http://47.97.76.2:8889'
 
 /**
  *  ERROR
@@ -20,6 +20,13 @@ function getEOS(privateKey) {
     }
     return Eos(config)
 }
+/*
+*   EOS - NewAccount
+*   @param creator
+*   @param name
+*   @param creator_privateKey
+*   @param callback
+**/
 function eos_randomAccount(creator,name,creator_privateKey,callback){
     setTimeout(function () {
         // keys
@@ -58,6 +65,11 @@ function eos_randomAccount(creator,name,creator_privateKey,callback){
         })
     }, 100)
 }
+/*
+*   EOS - Balance
+*   @param account
+*   @param callback
+**/
 function eos_balance(account,callback){
     var eos = getEOS(null)
     eos.getCurrencyBalance("eosio.token",account,"EOS").then(function(result) {
@@ -67,6 +79,15 @@ function eos_balance(account,callback){
     })
 
 }
+/*
+*   EOS - Transfer
+*   @param from
+*   @param to
+*   @param quantity
+*   @param memo
+*   @param from_privateKey
+*   @param callback
+**/
 function eos_transfer(from,to,quantity,memo,from_privateKey,callback){
     var eos = getEOS(from_privateKey)
     // Transfer
@@ -157,22 +178,67 @@ function house_rental_joined(callback) {
 
 /**
  *  House Rental - Transfer
+ *  @param from    转账方
+ *  @param to      接收方
+ *  @param amount  转账数量
+ *  @param from_privateKey      转账方私钥
  *  @param callback callback
  * */
-function house_rental_transfer(callback) {
-    var eos = getEOS(null)
-    eos.getTableRows({
-        scope: 'mutualaideos',
-        code: 'mutualaideos',
-        table: 'participator',
-        json: true
-    }).then(function(res) {
-        callback({status:true,message:res})
+function house_rental_rnt_transfer(from,to,amount,from_privateKey,callback) {
+    var eos = getEOS(from_privateKey);
+    eos.transaction({
+        actions: [
+            {
+                account: 'mutualaideos',
+                name: 'transfer_rnt',
+                authorization: [{
+                    actor: from,
+                    permission: 'active'
+                }],
+                data: {
+                    from: from,
+                    amount: amount
+                }
+            }
+        ]
+    }).then(function(result) {
+        callback({status:true,message:result})
     }).catch(function(err) {
         reject(err,callback)
     })
 }
-
+/**
+ *  House Rental - Apply
+ *  @param applicants     申请者
+ *  @param address        房屋地址
+ *  @param content        风险类型
+ *  @param applicants_privateKey      转账方私钥
+ *  @param callback callback
+ * */
+function house_rental_rnt_apply(applicants,address,content,applicants_privateKey,callback) {
+    var eos = getEOS(applicants_privateKey);
+    eos.transaction({
+        actions: [
+            {
+                account: 'mutualaideos',
+                name: 'apply',
+                authorization: [{
+                    actor: applicants,
+                    permission: 'active'
+                }],
+                data: {
+                    applicants: applicants,
+                    address: address,
+                    content: content
+                }
+            }
+        ]
+    }).then(function(result) {
+        callback({status:true,message:result})
+    }).catch(function(err) {
+        reject(err,callback)
+    })
+}
 /**
  *  House Rental - sale
  *  @param asker    卖方账号名
@@ -286,10 +352,11 @@ function house_rental_events(callback) {
  *  House Rental - validate
  *  @param verifier 验证管理员
  *  @param event_id 验证事件ID
+ *  @param status 状态  0-不同意、1-申请、2-同意
  *  @param verifier_privateKey 验证管理员私钥
  *  @param callback callback
  * */
-function house_rental_validate(verifier,event_id,verifier_privateKey,callback) {
+function house_rental_validate(verifier,event_id,stauts,verifier_privateKey,callback) {
     var eos = getEOS(verifier_privateKey);
     eos.transaction({
         actions: [
@@ -302,7 +369,8 @@ function house_rental_validate(verifier,event_id,verifier_privateKey,callback) {
                 }],
                 data: {
                     verifier: verifier,
-                    event_id: event_id
+                    event_id: event_id,
+                    status: status
                 }
             }
         ]
