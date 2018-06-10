@@ -276,12 +276,13 @@ footer{
     height: 96px;
     border-radius: 48px;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.1);
+    background: #ffffff;
     margin: 0 auto;
 }
 
 .advantage-body-title{
     margin-top: 24px;
+    font-weight: 500;
 }
 
 .advantage-body-content{
