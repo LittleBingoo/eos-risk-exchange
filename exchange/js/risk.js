@@ -21,12 +21,12 @@ function getEOS(privateKey) {
     return Eos(config)
 }
 /*
-*   EOS - NewAccount
-*   @param creator
-*   @param name
-*   @param creator_privateKey
-*   @param callback
-**/
+ *   EOS - NewAccount
+ *   @param creator
+ *   @param name
+ *   @param creator_privateKey
+ *   @param callback
+ **/
 function eos_randomAccount(creator,name,creator_privateKey,callback){
     setTimeout(function () {
         // keys
@@ -46,18 +46,18 @@ function eos_randomAccount(creator,name,creator_privateKey,callback){
                 owner: publicKey,
                 active: publicKey
             }),
-            tr.buyrambytes({
-                payer: creator,
-                receiver: name,
-                bytes: 8192
-            }),
-            tr.delegatebw({
-                from: creator,
-                receiver: name,
-                stake_net_quantity: '0.0100 SYS',
-                stake_cpu_quantity: '0.0100 SYS',
-                transfer: 0
-            })
+                tr.buyrambytes({
+                    payer: creator,
+                    receiver: name,
+                    bytes: 8192
+                }),
+                tr.delegatebw({
+                    from: creator,
+                    receiver: name,
+                    stake_net_quantity: '0.0100 SYS',
+                    stake_cpu_quantity: '0.0100 SYS',
+                    transfer: 0
+                })
         }).then(function(result) {
             callback({status:true,message:{'name':name,'publicKey':publicKey,'privateKey':privateKey}})
         }).catch(function(err) {
@@ -66,10 +66,10 @@ function eos_randomAccount(creator,name,creator_privateKey,callback){
     }, 100)
 }
 /*
-*   EOS - Balance
-*   @param account
-*   @param callback
-**/
+ *   EOS - Balance
+ *   @param account
+ *   @param callback
+ **/
 function eos_balance(account,callback){
     var eos = getEOS(null)
     eos.getCurrencyBalance("eosio.token",account,"EOS").then(function(result) {
@@ -80,14 +80,14 @@ function eos_balance(account,callback){
 
 }
 /*
-*   EOS - Transfer
-*   @param from
-*   @param to
-*   @param quantity
-*   @param memo
-*   @param from_privateKey
-*   @param callback
-**/
+ *   EOS - Transfer
+ *   @param from
+ *   @param to
+ *   @param quantity
+ *   @param memo
+ *   @param from_privateKey
+ *   @param callback
+ **/
 function eos_transfer(from,to,quantity,memo,from_privateKey,callback){
     var eos = getEOS(from_privateKey)
     // Transfer
@@ -118,7 +118,7 @@ function house_rental_join(renter,address,content,renter_privateKey,callback) {
         "threshold": 1,
         "keys": [
             {"key": renterPublicKey,"weight": 1}
-            ],
+        ],
         "accounts": [
             {"permission":{"actor":"mutualaideos","permission":"eosio.code"},"weight":1}]
     }
@@ -132,30 +132,30 @@ function house_rental_join(renter,address,content,renter_privateKey,callback) {
     }).then(function(result) {
         eos.transaction({
             actions: [
-            {
-                account: 'mutualaideos',
-                name: 'join',
-                authorization: [{
-                    actor: renter,
-                    permission: 'active'
-                }],
-                data: {
-                    renter: renter,
-                    address: address,
-                    content: content,
-                    quantity: '1.0000 EOS'
+                {
+                    account: 'mutualaideos',
+                    name: 'join',
+                    authorization: [{
+                        actor: renter,
+                        permission: 'active'
+                    }],
+                    data: {
+                        renter: renter,
+                        address: address,
+                        content: content,
+                        quantity: '1.0000 EOS'
+                    }
                 }
-            }
             ]
-         }).then(function(result2) {
+        }).then(function(result2) {
             callback({status:true,message:result2})
-         }).catch(function(err) {
+        }).catch(function(err) {
             reject(err,callback)
-         })
+        })
     }).catch(function(err) {
         reject(err,callback)
     })
-    
+
 }
 
 /**
@@ -281,25 +281,50 @@ function house_rental_rnt_sale(asker,number,price,asker_privateKey,callback) {
  *  @param callback callback
  * */
 function house_rental_rnt_buy(buyer,from,number,buyer_privateKey,callback) {
+
+    // keys
+    var _eos_ecc = eos_ecc,
+        PrivateKey = _eos_ecc.PrivateKey
+    var buyerPublicKey = PrivateKey.fromWif(buyer_privateKey).toPublic().toString()
+    // returns Promise
     var eos = getEOS(buyer_privateKey);
-    eos.transaction({
-        actions: [
-            {
-                account: 'mutualaideos',
-                name: 'take',
-                authorization: [{
-                    actor: buyer,
-                    permission: 'active'
-                }],
-                data: {
-                    taker: buyer,
-                    from: from,
-                    number: number
-                }
-            }
-        ]
+    var auth = {
+        "threshold": 1,
+        "keys": [
+            {"key": buyerPublicKey,"weight": 1}
+        ],
+        "accounts": [
+            {"permission":{"actor":"mutualaideos","permission":"eosio.code"},"weight":1}]
+    }
+    eos.transaction(function(tr) {
+        tr.updateauth({
+            account: buyer,
+            permission: 'active',
+            parent: 'owner',
+            auth: auth
+        })
     }).then(function(result) {
-        callback({status:true,message:result})
+        eos.transaction({
+            actions: [
+                {
+                    account: 'mutualaideos',
+                    name: 'take',
+                    authorization: [{
+                        actor: buyer,
+                        permission: 'active'
+                    }],
+                    data: {
+                        taker: buyer,
+                        from: from,
+                        number: number
+                    }
+                }
+            ]
+        }).then(function(result2) {
+            callback({status:true,message:result2})
+        }).catch(function(err) {
+            reject(err,callback)
+        })
     }).catch(function(err) {
         reject(err,callback)
     })
