@@ -1,5 +1,13 @@
 /** Normal **/
-
+body{
+    overflow-x: hidden;
+}
+input{
+    -webkit-appearance:none;
+}
+.market-body-value{
+    word-wrap: break-word;
+}
 .login-tab{
     width:200%;
     max-width: 600px;
@@ -11,7 +19,8 @@
 .login-tab > li > input{
     width: 100%;
     margin-top:24px;
-    height: 32px;
+    padding:6px 8px;
+    border: 1px solid #ccc;
 }
 
 .login-tab > li > button{
@@ -21,6 +30,7 @@
     color:#ffffff;
     padding: 6px 16px;
     font-size: 16px;
+    border:none;
 }
 
 .login-tab-title{
@@ -157,6 +167,13 @@ footer{
     .nav > li > a:hover{
         color: #ffffff !important;
     }
+    .nav>.open{
+        background: #777!important;
+    }
+    .nav>.open>a{
+        color: #fff!important;
+        background: transparent!important;
+    }
     .nav > .active > a{
         background-color: transparent !important;
     }
@@ -188,7 +205,7 @@ footer{
     min-width: 320px;
 }
 .getEosrisk-board-select{
-    width: 35% !important;
+    width: 182px !important;
     min-width: 100px !important;
 }
 
@@ -326,6 +343,7 @@ footer{
     display: inline-block;
     width: 60%;
     vertical-align: top;
+    word-wrap: break-word;
 }
 
 .risks-footer{
@@ -366,6 +384,7 @@ footer{
     height: 32px;
     line-height: 1.25;
     float: right;
+    border: none;
 }
 
 .market-body{
@@ -386,4 +405,38 @@ footer{
     display: inline-block;
     width: 60%;
     vertical-align: top;
+}
+@media (max-width: 768px) {
+    .login-tab > li{
+        padding:0 15px;
+    }
+    .getEosrisk-board{
+        width: 100%;
+        min-width: 100%;
+        padding: 2rem;
+        height: auto;
+        margin:40px auto;
+    }
+    .getEosrisk-board-input > .input-group > .input-group-addon,.getEosrisk-board-input > .input-group > input{
+        font-size: 16px;
+        padding:6px 0 6px 8px;
+    }
+    .risks{
+        width: 100%;
+    }
+    .market-card{
+        padding:20px;
+    }
+    footer{
+        margin-top: 40px;
+    }
+    .getEosrisk-header,.houseRental-header{
+        margin-top: 50px;
+    }
+    .houseRental-header-title,.advantage-header-title{
+        font-size: 35px;
+    }
+    .market-header > button{
+        width: 80px;
+    }
 }
